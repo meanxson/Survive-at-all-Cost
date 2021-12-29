@@ -9,6 +9,9 @@ public class PlayerBase : MonoBehaviour
     [SerializeField] private Joystick _joystick;
     [SerializeField] private Rigidbody _rigidbody;
     [SerializeField] private NavMeshAgent _agent;
+    
+    [field: SerializeField] public HealthContainer HealthContainer { get; private set; }
+    
     public PlayerModel Model { get; private set; }
 
     private PlayerMovement _playerMovement;

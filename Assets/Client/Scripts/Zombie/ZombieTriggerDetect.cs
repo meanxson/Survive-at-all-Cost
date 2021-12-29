@@ -11,7 +11,6 @@ public class ZombieTriggerDetect : MonoBehaviour
 
     private void Start()
     {
-        //Refactor: Bad practice of retype
         _attackState = (ZombieAttackState) _zombie.States.FirstOrDefault(state => state is ZombieAttackState);
     }
 

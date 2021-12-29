@@ -1,11 +1,6 @@
-using System;
 using System.Collections.Generic;
 using Client.Scripts.Zombie.States;
-using Sirenix.OdinInspector;
 using UnityEngine;
-using UnityEngine.AI;
-using Utils.GameSession;
-using Random = UnityEngine.Random;
 
 public class ZombieEssence : ZombieBase
 {

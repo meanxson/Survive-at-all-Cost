@@ -1,5 +1,4 @@
 using System.Threading.Tasks;
-using Client.Scripts.Zombie.States;
 using UnityEngine;
 using UnityEngine.AI;
 using Utils.GameSession;
@@ -49,7 +48,7 @@ public class ZombieFollowState : ZombieBaseState
         var target = _currentTarget;
         while (true)
         {
-            if (target != null) Target = target.transform.position;
+            if (!ReferenceEquals(target, null)) Target = target.transform.position;
 
             await Task.Delay(1);
 

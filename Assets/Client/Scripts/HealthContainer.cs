@@ -11,11 +11,8 @@ public class HealthContainer : MonoBehaviour
 
     public void ApplyDamage(int damage)
     {
-        if (_health > 0)
-        {
-            _health -= damage;
-            OnHealthChanged?.Invoke(_health);
-        }
+        _health -= damage;
+        OnHealthChanged?.Invoke(_health);
 
         if (_health <= 0)
             Died?.Invoke();

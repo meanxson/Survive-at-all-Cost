@@ -5,29 +5,34 @@ namespace Client.Scripts.Zombie.States
 {
     public class ZombieAttackState : ZombieBaseState
     {
-        private readonly float _damage;
+        private readonly int _damage;
         private PlayerBase _attackTarget;
+
+        private bool _isAction;
         
-        public ZombieAttackState(Animator animator, IZombieSwitchState zombieSwitchState, float damage) : base(animator, zombieSwitchState)
+        public ZombieAttackState(Animator animator, IZombieSwitchState zombieSwitchState, int damage) : base(animator, zombieSwitchState)
         {
             _damage = damage;
         }
 
         public override void Start()
         {
-            Debug.Log("Attack State On!");
+            _isAction = true;
+            Debug.Log($"Attack State {_isAction}");
         }
 
         public override void Stop()
         {
+            _isAction = false;
+            Debug.Log($"Attack State {_isAction}");
         }
 
         public override async void Action()
         {
-            while (true)
+            while (_isAction)
             {
-                await Task.Delay(2500);
-                
+                await Task.Delay(500);
+                _attackTarget.HealthContainer.ApplyDamage(_damage);
             }
         }
 
