@@ -6,10 +6,7 @@ public class ZombieEssence : ZombieBase
 {
     [SerializeField] private Animator _animator;
     [SerializeField] private ZombieConfig _config;
-    [SerializeField] private SphereCollider _triggerCollider;
-
-    private void OnValidate() => _triggerCollider.radius = _config.TriggerRadius;
-
+    
     private void Start()
     {
         CurrentState.Start();

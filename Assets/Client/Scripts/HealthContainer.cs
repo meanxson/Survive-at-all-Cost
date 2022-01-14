@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class HealthContainer : MonoBehaviour
+public class HealthContainer : MonoBehaviour, IDamageable
 {
     [SerializeField] private int _health;
     public event UnityAction<int> OnHealthChanged;
     public event UnityAction Died;
+    
+    [field: SerializeField] public HealthViewer Viewer { get; private set; }
 
     public void ApplyDamage(int damage)
     {

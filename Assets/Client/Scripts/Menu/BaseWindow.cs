@@ -2,7 +2,7 @@ using UnityEngine;
 
 public abstract class BaseWindow : MonoBehaviour
 {
-    protected BaseWindowManager Manager;
+    protected BaseWindowManager Manager { get; private set; }
 
     private void OnValidate() => Manager = GetComponentInParent<BaseWindowManager>();
 

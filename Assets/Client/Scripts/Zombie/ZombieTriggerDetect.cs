@@ -21,6 +21,7 @@ public class ZombieTriggerDetect : MonoBehaviour
             _zombie.SwitchState<ZombieAttackState>();
             _attackState.SetPlayer(player);
             _zombie.CurrentState.Action();
+            player.HealthContainer.Viewer.Show();
         }
     }
 
@@ -28,6 +29,7 @@ public class ZombieTriggerDetect : MonoBehaviour
     {
         if (other.TryGetComponent(out PlayerBase player))
         {
+            player.HealthContainer.Viewer.Hide();
             _zombie.SwitchState<ZombieFollowState>();
             _zombie.CurrentState.Action();
         }

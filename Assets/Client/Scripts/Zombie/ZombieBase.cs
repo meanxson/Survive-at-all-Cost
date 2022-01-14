@@ -8,6 +8,7 @@ public abstract class ZombieBase : MonoBehaviour, IZombieSwitchState
 {
     public List<ZombieBaseState> States { get; private protected set; }
     public ZombieBaseState CurrentState { get; private set; }
+    public HealthContainer HealthContainer { get; private set; }
     
     protected Rigidbody Rigidbody { get; private set; }
     protected NavMeshAgent Agent { get; private set; }
@@ -17,6 +18,7 @@ public abstract class ZombieBase : MonoBehaviour, IZombieSwitchState
         
         Rigidbody = GetComponent<Rigidbody>();
         Agent = GetComponent<NavMeshAgent>();
+        HealthContainer = GetComponent<HealthContainer>();
 
         Rigidbody.isKinematic = true;
         

@@ -7,19 +7,30 @@ public class HealthViewer : MonoBehaviour
   [SerializeField] private HealthContainer _healthContainer;
   [SerializeField] private Slider _slider;
   [SerializeField] private float _duration;
-  
-  private void OnEnable()
+
+  [SerializeField] private Image[] _fadeEffectImages;
+
+  private void Start()
   {
-    _healthContainer.OnHealthChanged += OnHealthChanged;
+    foreach (var effectImage in _fadeEffectImages)
+      effectImage.DOFade(0, 0);
   }
 
-  private void OnDisable()
+  private void OnEnable() => _healthContainer.OnHealthChanged += OnHealthChanged;
+
+  private void OnDisable() => _healthContainer.OnHealthChanged -= OnHealthChanged;
+
+  private void OnHealthChanged(int value) => _slider.DOValue(value, _duration);
+
+  public void Show()
   {
-    _healthContainer.OnHealthChanged -= OnHealthChanged;
+    foreach (var effectImage in _fadeEffectImages) 
+      effectImage.DOFade(1, _duration / 2);
   }
 
-  private void OnHealthChanged(int value)
+  public void Hide()
   {
-    _slider.DOValue(value, _duration);
+    foreach (var effectImage in _fadeEffectImages)
+      effectImage.DOFade(0, _duration / 2);
   }
 }

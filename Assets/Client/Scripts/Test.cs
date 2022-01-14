@@ -1,24 +1,24 @@
-using System;
-using Client.Scripts;
-using DG.Tweening;
-using ObservableVariable;
+using System.Collections.Generic;
+using Client.Scripts.UI.TextNotify;
 using Sirenix.OdinInspector;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Test : MonoBehaviour
 {
-    [SerializeField] private float _duration;
-    [SerializeField] private TestConfig _config;
-    
+    [SerializeField] private string _message;
+
+    [SerializeField] private List<string> _messages;
+
     [Button]
-    public void TurnLeft()
+    public void Foo()
     {
-        transform.DOMoveX(-5, _duration); //[-20,0,0]
+        TextNotify.Show(_message, 3f);
     }
 
     [Button]
-    public void TurnRight()
+    public void ShowAllTexts()
     {
-        transform.DOMoveX(5, _duration); //[20,0,0]
+        foreach (var m in _messages) TextNotify.Show(m, 3f);
     }
 }

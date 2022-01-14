@@ -15,6 +15,7 @@ public class PlayerBase : MonoBehaviour
     public PlayerModel Model { get; private set; }
 
     private PlayerMovement _playerMovement;
+    
 
     private void Awake()
     {
